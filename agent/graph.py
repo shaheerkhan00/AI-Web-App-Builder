@@ -32,6 +32,10 @@ graph.add_edge(start_key="planner",end_key="architect")
 graph.set_entry_point("planner")
 
 agent = graph.compile()
-user_prompt= "create a simple web app for calculator"
-result = agent.invoke({"user_prompt":user_prompt})
-print(result)
+
+if __name__ == "__main__":
+    user_prompt= "create a simple web app for calculator"
+    result = agent.invoke({"user_prompt":user_prompt})
+    print("Result:", result)
+
+
