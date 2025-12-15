@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, Field, ConfigDict
 
 
@@ -25,4 +26,7 @@ class TaskPlan(BaseModel):
     implementation_steps:list[ImplementationTask]=Field(description='A list of implementation steps to be taken to build the app')
     model_config = ConfigDict(extra='allow')
 
-    
+class CoderState(BaseModel):
+    task_plan: TaskPlan = Field(description='The task plan containing implementation steps')
+    current_step_index: int = Field(0, description='The index of the current implementation step being worked on')
+    current_file_content: Optional[str] = Field(None, description='The current content of the file being modified')   
